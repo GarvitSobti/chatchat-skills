@@ -21,7 +21,7 @@ jobs:
         uses: tj-actions/changed-files@v44
         with:
           files: 'skills/**/SKILL.md'
-          separator: "\n"
+          json: true
 
       - name: Validate SKILL.md files
         if: steps.changed.outputs.any_changed == 'true'
@@ -120,7 +120,9 @@ jobs:
             fi
 
             echo "  -> Validation passed for $file"
-          done <<< "${{ steps.changed.outputs.all_changed_files }}"
+          done < <(node -e "const files = JSON.parse(process.env.CHANGED_FILES || '[]'); for (const f of files) console.log(f);" )
+        env:
+          CHANGED_FILES: ${{ steps.changed.outputs.all_changed_files }}
 
           if [ "$ERRORS" -gt 0 ]; then
             echo "::error::$ERRORS validation error(s) found"
