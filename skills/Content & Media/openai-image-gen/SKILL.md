@@ -4,26 +4,12 @@ category: Content & Media
 author: openclaw
 name: OpenAI Image Gen
 description: Step-by-step guidance for openai image gen.
-homepage: https://platform.openai.com/docs/api-reference/images
-metadata:
-  {
-    "openclaw":
-      {
-        "emoji": "🖼️",
-        "requires": { "bins": ["python3"], "env": ["OPENAI_API_KEY"] },
-        "primaryEnv": "OPENAI_API_KEY",
-        "install":
-          [
-            {
-              "id": "python-brew",
-              "kind": "brew",
-              "formula": "python",
-              "bins": ["python3"],
-              "label": "Install Python (brew)",
-            },
-          ],
-      },
-  }
+requires:
+  - python3
+  - env:OPENAI_API_KEY
+examples:
+  - "Generate 8 images with model gpt-image-1 and save them to ./out/images."
+  - "Create 4 variations of this prompt and render them, then summarize the outputs."
 ---
 
 # OpenAI Image Gen
