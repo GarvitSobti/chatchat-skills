@@ -2,7 +2,7 @@
 id: checkout-management
 name: "Checkout Management"
 description: "Integrate PayPal payment processing with support for express checkout, subscriptions, and refund management."
-category: Business
+category: Development
 requires: []
 examples:
   - "Help me with checkout management."

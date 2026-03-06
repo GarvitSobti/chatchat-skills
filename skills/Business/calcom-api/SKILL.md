@@ -1,7 +1,7 @@
 ---
 id: calcom-api
 name: "Calcom API"
-description: "Interact with the Cal.com API v2 to manage scheduling, bookings, event types, availability, and calendars. Use this skill when building integrations that need to create or manage bookings, check availability, configure event types, or sync calendars with Cal.com's scheduling infrastructure."
+description: "Guidance-only reference for planning Cal.com API v2 scheduling integrations, including bookings, event types, availability, calendars, and webhook design."
 category: Business
 requires: []
 examples:
@@ -10,6 +10,8 @@ examples:
 ---
 
 # Cal.com API v2
+
+This is a guidance-only skill. Use it to design and review integration logic; do not execute API calls directly from this skill.
 
 This skill provides guidance for AI agents to interact with the Cal.com API v2, enabling scheduling automation, booking management, and calendar integrations.
 

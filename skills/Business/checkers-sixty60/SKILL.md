@@ -2,7 +2,7 @@
 id: checkers-sixty60
 name: "Checkers Sixty60"
 description: "Shop on Checkers.co.za Sixty60 delivery service via browser automation."
-category: Business
+category: Lifestyle
 requires: []
 examples:
   - "Help me with checkers sixty60."
