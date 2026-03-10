@@ -29,7 +29,7 @@ Coordinate repeatable GitHub operations with consistent quality and low operatio
 
 ## Automation Recipes
 
-- **Auto-assign reviewers:** Use CODEOWNERS plus `pull_request` trigger; or a custom action that assigns based on file paths, author, or round-robin. Limit to 2ΓÇô3 reviewers to avoid noise.
+- **Auto-assign reviewers:** Use CODEOWNERS plus `pull_request` trigger; or a custom action that assigns based on file paths, author, or round-robin. Limit to 2-3 reviewers to avoid noise.
 - **Auto-label PRs by path:** Match `paths` in `pull_request` and apply labels (e.g., `docs` for `docs/**`, `frontend` for `src/web/**`). Combine with type labels from PR title/body.
 - **Stale issue/PR management:** Run weekly; comment on inactive items, then close after grace period. Exempt labels like `pinned`, `security`. Log actions for audit.
 - **Release draft automation:** On tag push or `workflow_dispatch`, generate changelog from commits/PRs, create GitHub Release draft, attach artifacts. Require manual publish.

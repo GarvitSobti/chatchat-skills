@@ -23,7 +23,7 @@ Guide Railway deployments from preflight validation to post-deploy verification.
 
 1. **Confirm deployment target and intended version/change scope.** Identify the project and service(s). Choose deployment region (e.g., US West, EU) if relevant. Note whether this is a new deploy or an update.
 
-2. **Validate runtime and configuration.** Use `railway.json` or `Procfile` to define build and start commands explicitlyΓÇödo not rely on Nixpacks guessing. Example `railway.json`: `{"build": {"builder": "NIXPACKS"}, "deploy": {"startCommand": "npm run start", "restartPolicyType": "ON_FAILURE", "restartPolicyMaxRetries": 3}}`. For databases, ensure TCP proxy is enabled if connecting from external clients; Railway exposes `DATABASE_URL` with internal hostnames.
+2. **Validate runtime and configuration.** Use `railway.json` or `Procfile` to define build and start commands explicitly; do not rely on Nixpacks guessing. Example `railway.json`: `{"build": {"builder": "NIXPACKS"}, "deploy": {"startCommand": "npm run start", "restartPolicyType": "ON_FAILURE", "restartPolicyMaxRetries": 3}}`. For databases, ensure TCP proxy is enabled if connecting from external clients; Railway exposes `DATABASE_URL` with internal hostnames.
 
 3. **Configure volume mounts and environment groups.** If the app needs persistent storage, add a volume and mount path in the Railway dashboard. Use environment variable groups to separate staging from production. Reference variables with `$VAR` syntax in `railway.json` or dashboard.
 
@@ -33,7 +33,7 @@ Guide Railway deployments from preflight validation to post-deploy verification.
 
 6. **Execute deploy and monitor.** Use `railway up` or connect a GitHub repo for automatic deploys. Watch build and deploy logs in the dashboard or via `railway logs`. On Starter plan, services may sleep after inactivity; document this behavior.
 
-7. **Trigger rollback if checks fail.** Use Railway's deployment history: Dashboard ΓåÆ Service ΓåÆ Deployments ΓåÆ select previous deploy ΓåÆ Redeploy. Capture incident notes for post-mortem.
+7. **Trigger rollback if checks fail.** Use Railway's deployment history: Dashboard -> Service -> Deployments -> select previous deploy -> Redeploy. Capture incident notes for post-mortem.
 
 ## Common Pitfalls
 
@@ -76,7 +76,7 @@ Example `Procfile`: `web: npm run start`
 
 ## Rollback and Monitoring
 
-Railway stores deployment history per service. Rollback: Dashboard ΓåÆ select service ΓåÆ Deployments ΓåÆ choose previous successful deploy ΓåÆ Redeploy. Use `railway logs` for real-time debugging. Integrate with external monitoring (e.g., Sentry, Datadog) for error tracking and performance.
+Railway stores deployment history per service. Rollback: Dashboard -> select service -> Deployments -> choose previous successful deploy -> Redeploy. Use `railway logs` for real-time debugging. Integrate with external monitoring (e.g., Sentry, Datadog) for error tracking and performance.
 
 ## Output Format
 
@@ -106,7 +106,7 @@ Railway stores deployment history per service. Rollback: Dashboard ΓåÆ select
 
 ## Rollback
 - Trigger: <condition>
-- Action: Dashboard ΓåÆ Deployments ΓåÆ select prior deploy ΓåÆ Redeploy
+- Action: Dashboard -> Deployments -> select prior deploy -> Redeploy
 - Notes: <incident capture>
 ```
 

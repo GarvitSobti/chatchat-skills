@@ -34,7 +34,7 @@ Group by risk level:
 2. **Runtime non-breaking:** Patch and minor updates for production deps. Read changelogs for deprecations and behavior changes.
 3. **Major versions last:** One major per PR when possible. Isolate in a branch; run full regression and smoke tests.
 
-Avoid mixing framework upgrades (e.g., React) with library upgrades in the same batchΓÇöframework changes often cascade.
+Avoid mixing framework upgrades (e.g., React) with library upgrades in the same batch; framework changes often cascade.
 
 ## Migration Planning for Major Versions
 

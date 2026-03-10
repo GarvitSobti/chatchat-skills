@@ -23,7 +23,7 @@ Upgrade Electron and bundled Chromium safely by controlling compatibility risk a
 
 **Electron release notes.** Parse [Electron releases](https://github.com/electron/electron/releases) for breaking changes, deprecations, and security fixes. Check `BREAKING_CHANGES.md` and `CHANGELOG.md`; note Node.js and Chromium versions bundled with each Electron release.
 
-**Breaking change migration.** Follow ElectronΓÇÖs migration guides for major bumps (e.g. 28ΓåÆ29). Common areas: `webPreferences` defaults, `contextBridge` usage, `nodeIntegration` and `sandbox` behavior. Align with ChromiumΓÇÖs release notes for renderer-impacting changes.
+**Breaking change migration.** Follow Electron's migration guides for major bumps (e.g. 28->29). Common areas: `webPreferences` defaults, `contextBridge` usage, `nodeIntegration` and `sandbox` behavior. Align with Chromium's release notes for renderer-impacting changes.
 
 **contextIsolation and sandbox.** Newer Electron defaults enforce `contextIsolation: true` and `sandbox: true`. If your app relied on `contextIsolation: false`, migrate to `contextBridge.exposeInMainWorld` and remove direct `require` in renderer. Ensure preload scripts only expose intended APIs via IPC.
 
@@ -65,7 +65,7 @@ Return:
 
 - **Target/runtime rationale:** Chosen Electron version, bundled Node/Chromium versions, security or feature drivers, and risk level (low/medium/high).
 - **Breaking-change impact map:** Table of affected areas (main, preload, renderer, native modules), change type, mitigation status, and owner.
-- **Cross-platform validation:** Matrix of OS ├ù architecture with E2E pass/fail, smoke test results, and IPC boundary verification.
+- **Cross-platform validation:** Matrix of OS x architecture with E2E pass/fail, smoke test results, and IPC boundary verification.
 - **Rollout and rollback recommendation:** Staged rollout plan, telemetry thresholds, rollback triggers, and rollback steps (downgrade version, revert manifest).
 
 ## Constraints

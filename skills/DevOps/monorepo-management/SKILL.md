@@ -27,14 +27,14 @@ Design maintainable monorepo operating patterns for scale and reliability.
 
 3. **Optimize build/test with caching and selective execution.** Adopt a workspace protocol (npm workspaces, Yarn workspaces, or pnpm workspaces) for consistent installs and hoisting. Use affected-only CI: Nx (`nx affected`), Turborepo (`turbo run build --filter=...[origin/main]`), or Bazel to run builds and tests only for packages touched by a PR. Enable remote caching (Nx Cloud, Turborepo Remote Cache, or Bazel remote cache) so CI and local runs share artifacts.
 
-4. **Define release/versioning strategy for packages/services.** Use Changesets or Lerna for coordinated versioning: developers add a changeset file describing the change and version bump type; a release workflow batches changesets and publishes. For independent packages, consider independent versioning; for tightly coupled packages, use fixed versioning. Never publish from unstable branchesΓÇöonly from `main` or a dedicated release branch after merge.
+4. **Define release/versioning strategy for packages/services.** Use Changesets or Lerna for coordinated versioning: developers add a changeset file describing the change and version bump type; a release workflow batches changesets and publishes. For independent packages, consider independent versioning; for tightly coupled packages, use fixed versioning. Never publish from unstable branches; publish only from `main` or a dedicated release branch after merge.
 
 5. **Add governance checks for dependency and API contract stability.** Run `dependency-cruiser` or custom rules in CI to block new circular dependencies or violations of layering. Use API extractors or similar tools to detect breaking changes in public APIs before merge.
 
 ## Dependency Graph Management and Selective Test Execution
 
-- **Layering rules:** Define layers (e.g., `packages/core` ΓåÆ `packages/domain` ΓåÆ `packages/app`) and enforce that lower layers never import from higher layers. Use `dependency-cruiser` rules like `forbidden` to block violations.
-- **Affected detection:** Base affected set on git diff against the target branch. Include transitive dependents if a packageΓÇÖs public API changed. For tests, run unit tests only in affected packages; run integration/e2e tests when shared infra or entry points change.
+- **Layering rules:** Define layers (e.g., `packages/core` -> `packages/domain` -> `packages/app`) and enforce that lower layers never import from higher layers. Use `dependency-cruiser` rules like `forbidden` to block violations.
+- **Affected detection:** Base affected set on git diff against the target branch. Include transitive dependents if a package's public API changed. For tests, run unit tests only in affected packages; run integration/e2e tests when shared infra or entry points change.
 - **Caching keys:** Include lockfile hash, package.json hashes of dependencies, and source hashes. Invalidate when any of these change. Use content-addressable caching where possible.
 
 ## Common Pitfalls

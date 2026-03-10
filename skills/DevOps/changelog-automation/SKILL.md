@@ -30,27 +30,27 @@ Automate changelog creation while keeping release notes accurate and auditable.
 
 4. **Handle breaking changes.** Every breaking change must appear under a dedicated "Breaking Changes" section with a clear migration note: what was removed or changed, what to do instead, and any required code updates.
 
-5. **Apply semantic version bumping rules.** Map change types to version bumps: breaking ΓåÆ major; new features ΓåÆ minor; fixes and patches ΓåÆ patch. Validate that the proposed version matches the collected change set.
+5. **Apply semantic version bumping rules.** Map change types to version bumps: breaking -> major; new features -> minor; fixes and patches -> patch. Validate that the proposed version matches the collected change set.
 
 6. **Run verification.** Ensure no duplicate entries, no empty sections, correct date and version formatting, and that all referenced PRs/commits exist. Flag any entries that look auto-generated but lack human review.
 
 ## Commit Message and PR Label Conventions
 
 **Conventional Commits (for commit-based changelogs):**
-- `feat(scope): description` ΓåÆ Added
-- `fix(scope): description` ΓåÆ Fixed
-- `docs(scope): description` ΓåÆ Documentation
-- `refactor(scope): description` ΓåÆ Changed
-- `perf(scope): description` ΓåÆ Performance
-- `chore(scope): description` ΓåÆ omit or Chore
-- Footer: `BREAKING CHANGE: description` ΓåÆ Breaking Changes
+- `feat(scope): description` -> Added
+- `fix(scope): description` -> Fixed
+- `docs(scope): description` -> Documentation
+- `refactor(scope): description` -> Changed
+- `perf(scope): description` -> Performance
+- `chore(scope): description` -> omit or Chore
+- Footer: `BREAKING CHANGE: description` -> Breaking Changes
 
 **PR labels (for PR-based changelogs):**
-- `changelog:added`, `type:feature` ΓåÆ Added
-- `changelog:fixed`, `type:bugfix` ΓåÆ Fixed
-- `changelog:changed`, `type:refactor` ΓåÆ Changed
-- `changelog:breaking`, `type:breaking` ΓåÆ Breaking Changes
-- `changelog:skip` ΓåÆ exclude from changelog
+- `changelog:added`, `type:feature` -> Added
+- `changelog:fixed`, `type:bugfix` -> Fixed
+- `changelog:changed`, `type:refactor` -> Changed
+- `changelog:breaking`, `type:breaking` -> Breaking Changes
+- `changelog:skip` -> exclude from changelog
 
 Standardize on one scheme per repo and document it in CONTRIBUTING.md.
 

@@ -25,7 +25,7 @@ Deploy to Render reliably with preflight checks and service-health verification.
 
 2. **Validate environment variables and dependent services.** Ensure all required env vars are set in the Render dashboard or via `render.yaml`. Confirm private services and databases are reachable. Use environment groups for staging vs production to avoid cross-environment leakage.
 
-3. **Configure build and deploy behavior.** Set explicit `buildCommand` and `startCommand` in `render.yaml` or the dashboardΓÇönever rely on Render's auto-detection for production. Use build filters (e.g., `branch: main` or path filters) to avoid unnecessary builds. For preview environments, configure branch-based deploys with unique URLs.
+3. **Configure build and deploy behavior.** Set explicit `buildCommand` and `startCommand` in `render.yaml` or the dashboard; never rely on Render's auto-detection for production. Use build filters (e.g., `branch: main` or path filters) to avoid unnecessary builds. For preview environments, configure branch-based deploys with unique URLs.
 
 4. **Define health check and startup behavior.** Configure a dedicated health check path (e.g., `/health`) that returns 200 and exercises minimal logic. Set `healthCheckPath`, `healthCheckInterval`, and `unhealthyThreshold` appropriately. Free-tier services spin down after inactivity; document cold start latency and consider a warm-up strategy for user-facing endpoints.
 
@@ -33,14 +33,14 @@ Deploy to Render reliably with preflight checks and service-health verification.
 
 6. **Deploy and monitor startup and health signals.** Trigger deploy (manual or via push), watch build logs for failures, then monitor the health check and startup logs. Confirm the service reaches "Live" before declaring success.
 
-7. **Apply rollback if checks fail or regressions appear.** Use Render's Deploy History (Dashboard ΓåÆ Service ΓåÆ Deployments) to roll back. Select the previous successful deploy and click "Rollback" or "Redeploy." Document the rollback trigger and capture incident notes for post-mortem.
+7. **Apply rollback if checks fail or regressions appear.** Use Render's Deploy History (Dashboard -> Service -> Deployments) to roll back. Select the previous successful deploy and click "Rollback" or "Redeploy." Document the rollback trigger and capture incident notes for post-mortem.
 
 ## Common Pitfalls
 
 - **Relying on auto-deploy for production.** Auto-deploy on `main` can ship broken commits. Use manual deploy or branch protection plus deploy hooks for production.
 - **Not configuring a health check path.** Without `healthCheckPath`, Render cannot reliably detect unhealthy instances; traffic may still route to failing containers.
 - **Missing build command in render.yaml.** If `buildCommand` is omitted, Render may guess incorrectly (e.g., wrong package manager or no build step), leading to failed or incomplete deploys.
-- **Ignoring cold start behavior on free tier.** Free services sleep after inactivity; first requests can take 30ΓÇô60+ seconds. Set user expectations or use a paid plan for production.
+- **Ignoring cold start behavior on free tier.** Free services sleep after inactivity; first requests can take 30-60+ seconds. Set user expectations or use a paid plan for production.
 - **Ephemeral filesystem assumptions.** Writing to the project directory or `/tmp` without a persistent disk means data is lost on restart or redeploy. Use Render Disks for persistent storage.
 
 ## render.yaml Configuration Patterns
@@ -79,7 +79,7 @@ services:
 
 ## Rollback Guidance
 
-Render stores deploy history per service. To roll back: open the service ΓåÆ Deployments ΓåÆ select the last known-good deploy ΓåÆ Rollback/Redeploy. The previous deploy's image and config are reused. There is no built-in blue-green or canary; rollback is full revert to a prior deploy.
+Render stores deploy history per service. To roll back: open the service -> Deployments -> select the last known-good deploy -> Rollback/Redeploy. The previous deploy's image and config are reused. There is no built-in blue-green or canary; rollback is full revert to a prior deploy.
 
 ## Output Format
 
@@ -106,7 +106,7 @@ Render stores deploy history per service. To roll back: open the service ΓåÆ 
 
 ## Rollback
 - Trigger: <condition>
-- Action: Dashboard ΓåÆ Service ΓåÆ Deployments ΓåÆ select prior deploy ΓåÆ Rollback
+- Action: Dashboard -> Service -> Deployments -> select prior deploy -> Rollback
 - Notes: <incident capture>
 ```
 

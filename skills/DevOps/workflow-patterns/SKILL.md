@@ -31,7 +31,7 @@ Create practical workflow templates that improve consistency and reduce executio
 
 5. **Define escalation paths.** For each failure mode, specify: who is notified, escalation timeout, and next step (retry, escalate, rollback).
 
-6. **Assign owners and escalation rules.** Every stage has a single owner. Escalation goes to the next level (e.g., on-call ΓåÆ tech lead ΓåÆ manager) with clear timeouts.
+6. **Assign owners and escalation rules.** Every stage has a single owner. Escalation goes to the next level (e.g., on-call -> tech lead -> manager) with clear timeouts.
 
 7. **Package workflow as a reusable template.** Include: checklist, runbook links, decision trees, and rollback instructions.
 
@@ -51,11 +51,11 @@ Create practical workflow templates that improve consistency and reduce executio
 
 ## Example Workflow Patterns
 
-**Release workflow:** Trigger ΓåÆ merge to release branch. Stages: build ΓåÆ test ΓåÆ stage deploy ΓåÆ smoke test ΓåÆ production deploy (manual gate) ΓåÆ post-deploy verification. Rollback: revert commit + redeploy previous tag. Escalation: release manager ΓåÆ engineering manager.
+**Release workflow:** Trigger -> merge to release branch. Stages: build -> test -> stage deploy -> smoke test -> production deploy (manual gate) -> post-deploy verification. Rollback: revert commit + redeploy previous tag. Escalation: release manager -> engineering manager.
 
-**Incident response workflow:** Trigger ΓåÆ P1/P2 alert. Stages: acknowledge (on-call) ΓåÆ triage (identify scope) ΓåÆ mitigate (fix or rollback) ΓåÆ verify (monitoring stable) ΓåÆ post-mortem. Escalation: on-call ΓåÆ secondary ΓåÆ tech lead ΓåÆ manager. Timeouts: 5 min acknowledge, 15 min escalate.
+**Incident response workflow:** Trigger -> P1/P2 alert. Stages: acknowledge (on-call) -> triage (identify scope) -> mitigate (fix or rollback) -> verify (monitoring stable) -> post-mortem. Escalation: on-call -> secondary -> tech lead -> manager. Timeouts: 5 min acknowledge, 15 min escalate.
 
-**On-call rotation handoff:** Trigger ΓåÆ shift start. Stages: receive handoff (incidents, context) ΓåÆ verify access (dashboards, runbooks) ΓåÆ confirm with outgoing on-call ΓåÆ assume ownership. Output: handoff checklist signed, escalation contacts updated.
+**On-call rotation handoff:** Trigger -> shift start. Stages: receive handoff (incidents, context) -> verify access (dashboards, runbooks) -> confirm with outgoing on-call -> assume ownership. Output: handoff checklist signed, escalation contacts updated.
 
 ## Output Format
 
@@ -78,8 +78,8 @@ Create practical workflow templates that improve consistency and reduce executio
 - [ ] Stage 2: <precondition>
 
 ## Escalation Path
-- Level 1: <role> ΓÇö timeout: <duration>
-- Level 2: <role> ΓÇö timeout: <duration>
+- Level 1: <role> - timeout: <duration>
+- Level 2: <role> - timeout: <duration>
 
 ## Rollback Path
 - <steps to rollback>

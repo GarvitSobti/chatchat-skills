@@ -64,10 +64,10 @@ Improve monorepo build performance through reliable Turborepo caching.
 
 ## Cache Debugging Commands
 
-- `turbo run build --summarize` ΓÇö human-readable summary with cache hit/miss.
-- `turbo run build --dry-run=json` ΓÇö JSON with hash inputs and task graph.
-- `turbo run build --force` ΓÇö bypass cache to verify fresh output.
-- `turbo daemon stop` ΓÇö stop local daemon if cache behavior seems stuck.
+- `turbo run build --summarize` - human-readable summary with cache hit/miss.
+- `turbo run build --dry-run=json` - JSON with hash inputs and task graph.
+- `turbo run build --force` - bypass cache to verify fresh output.
+- `turbo daemon stop` - stop local daemon if cache behavior seems stuck.
 - Inspect `node_modules/.cache/turbo` or `.turbo/cache` for local cache location.
 
 ## Output Format

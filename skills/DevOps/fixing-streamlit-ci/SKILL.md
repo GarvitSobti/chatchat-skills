@@ -63,7 +63,7 @@ Restore Streamlit CI health quickly, then harden the pipeline to prevent repeat 
 ## Common Pitfalls
 
 - **Pinning Streamlit but not protobuf**: Streamlit pulls protobuf as a dependency; a newer protobuf can break compatibility. Pin both in requirements or lockfile.
-- **Ignoring deprecation warnings**: Warnings in Streamlit (e.g., `st.cache` ΓåÆ `st.cache_data`) can become errors in the next minor release. Fix warnings before they block CI.
+- **Ignoring deprecation warnings**: Warnings in Streamlit (e.g., `st.cache` -> `st.cache_data`) can become errors in the next minor release. Fix warnings before they block CI.
 - **Testing with `streamlit run` without headless mode**: Non-headless runs may behave differently in CI; always use `--server.headless true` for CI-like validation.
 - **Single-stage pipelines**: Lumping install, test, and deploy into one job makes it hard to know where failure occurred. Split stages.
 - **No lockfile or loose pins**: `streamlit>=1.28` in requirements.txt can resolve to different versions across runs. Use a lockfile or exact pins.

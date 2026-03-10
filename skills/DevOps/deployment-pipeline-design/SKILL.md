@@ -23,7 +23,7 @@ Create reliable deployment pipelines that balance release speed with operational
 
 ### 1. Define environments, ownership, and promotion rules
 
-- List environments in promotion order (e.g., dev ΓåÆ integration ΓåÆ staging ΓåÆ production).
+- List environments in promotion order (e.g., dev -> integration -> staging -> production).
 - Assign ownership per environment (who approves, who deploys, who owns incidents).
 - Set promotion rules: automatic vs manual, time windows, change freezes.
 - Decide which environments require parity with production (staging should mirror prod config where possible).
@@ -61,7 +61,7 @@ Choose based on service characteristics:
 
 - **Rollback triggers**: Manual decision, auto-stop fired, or critical alert.
 - **Rollback steps**: One-command or minimal-step revert (e.g., revert to previous artifact, switch traffic back).
-- **Post-deploy verification**: Smoke tests, synthetic checks, log sampling. Run within 5ΓÇô10 minutes of deploy.
+- **Post-deploy verification**: Smoke tests, synthetic checks, log sampling. Run within 5-10 minutes of deploy.
 - **Incident handoff**: Who is paged, escalation path, when to involve on-call.
 
 ## Choosing Deployment Strategy by Service Type
@@ -94,7 +94,7 @@ Choose based on service characteristics:
 |-------------|-------|-----------|------------------|
 | dev | ... | auto | no |
 | staging | ... | auto | yes |
-| production | ... | manual/auto | ΓÇö |
+| production | ... | manual/auto | - |
 
 ## Quality Gates (in order)
 | Gate | Blocking | Failure action |

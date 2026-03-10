@@ -35,7 +35,7 @@ Ship desktop versions safely with clear release gates, artifact verification, an
 
 **electron-updater.** Configure `provider` (generic, GitHub, S3, etc.), `channel` (stable/beta/alpha), and `updaterCacheDirName`. Use `allowDowngrade: false` unless you need rollback. Set `autoDownload` and `autoInstallOnAppQuit` per product requirements.
 
-**Staged rollout.** Use percentage-based rollout (e.g. 5% ΓåÆ 25% ΓåÆ 50% ΓåÆ 100%) by serving different `latest.yml` or equivalent manifests to subsets of users. Implement server-side logic or CDN rules to vary response by user segment. Monitor crash rates and error telemetry before increasing percentage.
+**Staged rollout.** Use percentage-based rollout (e.g. 5% -> 25% -> 50% -> 100%) by serving different `latest.yml` or equivalent manifests to subsets of users. Implement server-side logic or CDN rules to vary response by user segment. Monitor crash rates and error telemetry before increasing percentage.
 
 ## Common Pitfalls
 

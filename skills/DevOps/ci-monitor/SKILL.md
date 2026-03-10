@@ -23,13 +23,13 @@ Track CI health and drive rapid recovery from failing pipelines.
 
 ### 1. Collect pipeline outcomes and failure categories
 
-- **Sub-steps:** Query CI API or logs for the last 7ΓÇô14 days; extract job names, exit codes, durations, and failure messages; normalize timestamps and branch/PR context.
+- **Sub-steps:** Query CI API or logs for the last 7-14 days; extract job names, exit codes, durations, and failure messages; normalize timestamps and branch/PR context.
 - **Decision criteria:** Include only main/trunk and primary release branches unless explicitly asked to analyze feature branches.
 - **Techniques:** Use job-level granularity (not just pipeline-level); capture retry counts and whether failures occurred on first run vs. retry.
 
 ### 2. Identify highest-impact failing jobs and bottlenecks
 
-- **Sub-steps:** Compute failure rate per job (failures / runs); rank by frequency ├ù blast radius (how many PRs blocked); measure P95 duration and queue time.
+- **Sub-steps:** Compute failure rate per job (failures / runs); rank by frequency x blast radius (how many PRs blocked); measure P95 duration and queue time.
 - **Decision criteria:** Prioritize jobs that block merges or run on every commit. Jobs with &lt;5% failure rate may be lower priority unless they are critical path.
 - **Techniques:** Cross-reference with recent code changes; flag jobs whose duration has increased &gt;20% week-over-week.
 
@@ -66,10 +66,10 @@ Track CI health and drive rapid recovery from failing pipelines.
 
 ```markdown
 ## CI Health Snapshot
-- **Success rate:** <percent> (target: ΓëÑ95% for main branch)
+- **Success rate:** <percent> (target: >=95% for main branch)
 - **Mean pipeline duration:** <time> (target: no &gt;15% increase WoW)
 - **P95 queue time:** <time> (target: &lt;10 min for standard runners)
-- **Top 5 failing jobs:** <name> ΓÇö <failure_rate>% ΓÇö <runs_in_period>
+- **Top 5 failing jobs:** <name> - <failure_rate>% - <runs_in_period>
 - **Flake rate:** <percent> (pass-on-retry / total runs)
 
 ## Failure Categories (last 7 days)
@@ -86,8 +86,8 @@ Track CI health and drive rapid recovery from failing pipelines.
 | 2 | ...   | ...     | ...   | ...  | ...          |
 
 ## Verification Checklist
-- [ ] Success rate ΓëÑ95% or improved by ΓëÑ50% for targeted jobs
-- [ ] Mean duration stable (┬▒15% WoW)
+- [ ] Success rate >=95% or improved by >=50% for targeted jobs
+- [ ] Mean duration stable (+/-15% WoW)
 - [ ] Queue time &lt;10 min P95
 - [ ] Flake recurrence tracked and &lt;2% for critical path jobs
 - [ ] No new P0/P1 regressions in verification window

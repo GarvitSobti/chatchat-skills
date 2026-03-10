@@ -27,7 +27,7 @@ Execute Cloudflare deployments with predictable verification and controlled roll
 
 3. **Run pre-deploy checks and expected-behavior smoke tests.** Use `wrangler dev` locally to test bindings and routes. Run `wrangler deploy --dry-run --outdir=dist` to validate build without deploying. Verify route patterns (e.g., `example.com/*`) do not conflict with existing routes.
 
-4. **Deploy with staged verification checkpoints.** Deploy to a staging or preview environment first. Use `wrangler tail` for live debugging during verification. Confirm routes in Cloudflare dashboard: Workers & Pages ΓåÆ your worker ΓåÆ Settings ΓåÆ Triggers. Check that the deployed script matches the expected version.
+4. **Deploy with staged verification checkpoints.** Deploy to a staging or preview environment first. Use `wrangler tail` for live debugging during verification. Confirm routes in Cloudflare dashboard: Workers & Pages -> your worker -> Settings -> Triggers. Check that the deployed script matches the expected version.
 
 5. **Trigger rollback when failure thresholds are reached.** Use version rollback (Workers: Versions tab), route revert, or cache purge as needed. Document thresholds (e.g., error rate > 5%, latency p99 > 2s).
 
@@ -36,7 +36,7 @@ Execute Cloudflare deployments with predictable verification and controlled roll
 - **Stale DNS cache after route changes.** Route updates can take minutes to propagate. Avoid assuming immediate effect; verify in dashboard and with `curl` from multiple locations.
 - **Missing compatibility_date in wrangler.toml.** Workers require `compatibility_date` for runtime behavior. Deploying without it can cause undefined behavior or failures.
 - **Deploying without testing bindings.** KV/R2/D1 bindings must exist before deploy. A typo in a binding name fails at runtime, not at deploy.
-- **Forgetting to purge CDN cache.** After static asset or Worker response changes, purge cache via dashboard (Caching ΓåÆ Configuration ΓåÆ Purge Everything) or API to avoid serving stale content.
+- **Forgetting to purge CDN cache.** After static asset or Worker response changes, purge cache via dashboard (Caching -> Configuration -> Purge Everything) or API to avoid serving stale content.
 
 ## Wrangler Commands and Dashboard Verification
 
@@ -57,13 +57,13 @@ wrangler d1 list
 wrangler secret list
 ```
 
-**Dashboard verification:** Workers & Pages ΓåÆ select service ΓåÆ Triggers (routes), Settings (bindings), Metrics (requests/errors). Caching ΓåÆ Purge Everything when needed.
+**Dashboard verification:** Workers & Pages -> select service -> Triggers (routes), Settings (bindings), Metrics (requests/errors). Caching -> Purge Everything when needed.
 
 ## Rollback Strategy
 
-- **Version rollback (Workers):** Dashboard ΓåÆ Workers & Pages ΓåÆ your worker ΓåÆ Versions ΓåÆ select previous version ΓåÆ Deploy. Restores prior script without code change.
+- **Version rollback (Workers):** Dashboard -> Workers & Pages -> your worker -> Versions -> select previous version -> Deploy. Restores prior script without code change.
 - **Route revert:** Remove or adjust route in Triggers to point to previous worker or disable. Use when route config is wrong.
-- **Cache purge:** Caching ΓåÆ Purge Everything (or Purge by URL). Use when static assets or cached responses are stale; does not revert Worker code.
+- **Cache purge:** Caching -> Purge Everything (or Purge by URL). Use when static assets or cached responses are stale; does not revert Worker code.
 
 ## Output Format
 

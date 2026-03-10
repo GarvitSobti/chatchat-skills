@@ -48,7 +48,7 @@ Investigate intermittent CI failures and convert them into actionable fixes.
 
 5. **Verify recurrence drop after remediation**
    - Run the previously flaky test 50+ times in CI before closing.
-   - Monitor for 1ΓÇô2 weeks; some flakes have long tails.
+   - Monitor for 1-2 weeks; some flakes have long tails.
 
 ## Flake Classification Guide
 
@@ -62,10 +62,10 @@ Investigate intermittent CI failures and convert them into actionable fixes.
 
 ## Common Pitfalls
 
-- **Blanket retries hiding real bugs**: Retrying every failure masks underlying issues. Use retries only for known transient infra (e.g., network blips) and cap at 1ΓÇô2 retries. If a test needs >2 retries to pass, fix the root cause.
+- **Blanket retries hiding real bugs**: Retrying every failure masks underlying issues. Use retries only for known transient infra (e.g., network blips) and cap at 1-2 retries. If a test needs >2 retries to pass, fix the root cause.
 - **Quarantining without follow-up**: Marking tests as "skip" or "quarantine" without a ticket or SLA leads to permanent debt. Every quarantined test must have an owner and a target date for fix or removal.
 - **Fixing symptoms instead of causes**: Increasing timeouts or adding sleeps often papers over races. Prefer explicit synchronization, deterministic completion, or test redesign.
-- **Ignoring recurrence rate**: A 2% flake can still block 1 in 50 PRs. Track and triage by impact (PRs blocked ├ù frequency), not just raw failure count.
+- **Ignoring recurrence rate**: A 2% flake can still block 1 in 50 PRs. Track and triage by impact (PRs blocked x frequency), not just raw failure count.
 - **Treating all flakes alike**: Infra flakes (runner OOM, network) need different fixes than test logic flakes. Misclassifying leads to wrong remediation.
 
 ## Output Format
@@ -79,13 +79,13 @@ Investigate intermittent CI failures and convert them into actionable fixes.
 - **Suspected category**: <from classification guide>
 
 ## Likely Causes (ranked)
-1. <cause> ΓÇö <brief evidence>
-2. <cause> ΓÇö <brief evidence>
+1. <cause> - <brief evidence>
+2. <cause> - <brief evidence>
 
 ## Remediation Plan
 - [ ] <specific action, e.g., "Add explicit wait for element X before assertion">
 - [ ] <deterministic guard, e.g., "Reset DB in beforeEach">
-- [ ] Track recurrence for N runs (recommend N ΓëÑ 50)
+- [ ] Track recurrence for N runs (recommend N >= 50)
 - [ ] Owner: <person or team> | Target: <date>
 
 ## Constraints
