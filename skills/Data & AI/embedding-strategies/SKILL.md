@@ -1,20 +1,41 @@
 ---
 id: embedding-strategies
 name: Embedding Strategies
-description: Step-by-step guidance for embedding strategies.
+description: Practical guidance for selecting and operating embedding strategies.
 category: Data & AI
+requires: []
+examples:
+  - "Choose an embedding strategy for multilingual document search."
+  - "How do I evaluate chunking and embedding model quality?"
 ---
 
 # Embedding Strategies
 
-Support embedding strategies workflows with clear steps and best practices.
+Help the agent provide practical guidance for embedding model and retrieval design.
 
 ## When to Use
 
-- You need help with embedding strategies.
-- You want a clear, actionable next step.
+- The user needs help choosing embeddings for search or RAG workloads.
+- The user asks about chunking, dimensionality, or retrieval quality.
+- The user wants implementation-ready trade-offs and tuning guidance.
+
+## Instructions
+
+1. Clarify data type, query intent, and latency/cost constraints.
+2. Recommend embedding model and chunking strategy.
+3. Define indexing, re-embedding, and evaluation workflow.
+4. Include quality metrics and common failure patterns.
+5. End with a prioritized implementation checklist.
+
+## Tool Use Constraints
+
+- Use tools only when needed to complete the task.
+- Allowed built-in tools: firecrawl_searchWeb, firecrawl_scrapeUrl, rag_data_search.
+- Allowed integrations: Google Calendar, Slack, GitHub, Zoom, Microsoft Teams, Microsoft 365, Notion, X (Twitter).
+- Do not call or reference any other tools or integrations as executable options.
 
 ## Output
 
-- Summary of goals and plan
-- Key tips and precautions
+- Recommended embedding strategy
+- Step-by-step implementation plan
+- Evaluation and validation checklist
